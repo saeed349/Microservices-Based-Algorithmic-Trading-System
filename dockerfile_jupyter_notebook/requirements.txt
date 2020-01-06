@@ -1,0 +1,9 @@
+psycopg2-binary
+mlflow==1.4.0
+xgboost
+boto3
+oandapyV20
+backtrader
+v20
+pyfolio
+minio

@@ -1,0 +1,2 @@
+acc_id_practice="101-001-5119662-001"
+token_practice="5a4146aa9dd7becee00fd86618d79671-62d870e9f17e7eff11853125b82a75bd"

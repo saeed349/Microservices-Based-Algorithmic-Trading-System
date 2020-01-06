@@ -1,0 +1,2 @@
+Strategy,Mode,Securities,Model ID,Account,Token,Strategy Parameters
+simple_strategy_2,backtest,"EUR_USD,GBP_USD",b5c9975d81c64bc3b662654007e1c20d,,,ml_serving=True

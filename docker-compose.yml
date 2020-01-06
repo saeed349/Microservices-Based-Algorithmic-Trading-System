@@ -1,0 +1,137 @@
+version: "3.7"
+services:
+    minio-image:
+        container_name: minio-image
+        build:
+            context: ./dockerfile_minio
+        restart: always
+        working_dir: "/minio-image/storage"
+        volumes:
+            - ${WD}/minio/storage:/minio-image/storage
+        ports:
+            - "9000:9000"
+        environment:
+            MINIO_ACCESS_KEY: minio-image
+            MINIO_SECRET_KEY: minio-image-pass
+        command: server /minio-image/storage
+
+    mlflow-image:
+        container_name: "mlflow-image"
+        build:
+            context: ./dockerfile_mlflowserver
+        working_dir: "/mlflow-image"
+        volumes:
+            - ${WD}/mlflow:/mlflow-image
+        environment:
+            MLFLOW_S3_ENDPOINT_URL: http://minio-image:9000
+            AWS_ACCESS_KEY_ID: minio-image
+            AWS_SECRET_ACCESS_KEY: minio-image-pass
+        ports:
+            - "5500:5500"
+        command: mlflow server --host 0.0.0.0 --port 5500 --backend-store-uri /mlflow-image/mlruns 
+
+
+    jupyter-image:
+        container_name: "jupyter-image"
+        build:
+            context: ./dockerfile_jupyter_notebook
+        volumes:
+            - ${WD}/notebooks:/home/jovyan/work
+            - ${WD}/q_pack:/home/jovyan/work/q_pack
+            - ${WD}/mlflow:/mlflow-image
+        environment:
+            MLFLOW_S3_ENDPOINT_URL: http://minio-image:9000
+            AWS_ACCESS_KEY_ID: minio-image
+            AWS_SECRET_ACCESS_KEY: minio-image-pass    
+            MLFLOW_TRACKING_URI: http://mlflow-image:5500        
+        ports:    
+            - "8888:8888"
+
+
+    redis:
+        image: redis
+        restart: always
+        volumes:
+            - redis:/data
+
+    superset:
+        container_name: "superset"
+        build:
+            context: ./dockerfile_superset
+        restart: always
+        depends_on:
+            - redis
+        environment:
+            MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+            SUPERSET_HOME: /etc/superset
+        ports:
+            - "8088:8088"
+        volumes:
+            - ${WD}/superset/superset_config.py:/etc/superset/superset_config.py
+            - ${WD}/superset/superset.db:/var/lib/superset/superset.db              
+        
+    postgres_secmaster:
+        image: postgres
+        restart: always
+        container_name: "my_postgres"
+        ports:
+            - 5431:5431                
+        environment:
+            - SHARED_PASSWORD=password
+            - POSTGRES_PASSWORD=posgres349
+        volumes:
+            - ${WD}/postgress_db/scripts/:/docker-entrypoint-initdb.d/ 
+            - pg_data:/var/lib/postgresql/data
+
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: "pgadmin"
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "guest"
+            PGADMIN_DEFAULT_PASSWORD: "guest"
+        volumes:
+            - ${WD}/pgadmin/:/var/lib/pgadmin 
+        ports:
+            - 1234:80
+        depends_on:
+            - postgres_secmaster
+    
+    postgres:
+        image: postgres
+        container_name: "airflow_postgres"
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow   
+        volumes:
+            - pg_data_airflow:/var/lib/postgresql/data
+            
+    airflow:
+        image: airflow
+        container_name: "my_airflow"
+        build:
+            context: ./dockerfile_airflow
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            - LOAD_EX=n
+            - EXECUTOR=Local
+            - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+        volumes:
+            - ${WD}/airflow/dags:/usr/local/airflow/dags
+            - ${WD}/q_pack:/usr/local/airflow/dags/q_pack
+        ports:
+            - 8080:8080
+        command: webserver
+
+volumes:
+    pg_data:
+        external: false
+        name: pg_data
+    pg_data_airflow:
+        external: false
+        name: pg_data_airflow
+    redis:
+        external: false
+        name: redis

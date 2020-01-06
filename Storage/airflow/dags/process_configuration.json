@@ -1,0 +1,11 @@
+{
+  "name": "Dynamic_DAG",
+  "schedule": "@hourly",
+  "tables": [
+    "Customer",
+    "Concact",
+    "Address",
+    "Product",
+    "Test-Test"
+  ]
+}
