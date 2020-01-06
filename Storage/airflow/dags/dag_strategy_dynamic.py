@@ -26,25 +26,25 @@ def create_dag(dag_id,
             task_id='clear',
             dag=dag
         )
-        command={}
         for i,row in df.iterrows():
+            command={}
             command['--strat_name']=row['Strategy']
             command['--mode']=str(row['Mode'])
             command['--tickers']=row['Securities']
             command['--broker_token']=row['Token']
             command['--broker_account']=row['Account']
-            command['--strat_param']=("model_uri="+row['Model ID']+","+row["Strategy Parameters"]) if row["Strategy Parameters"]!="" else ("model_uri="+row['Model ID'])
+            if row['Model ID']!="" or row["Strategy Parameters"]!="":
+                command['--strat_param']=("model_uri="+row['Model ID']+","+row["Strategy Parameters"]) if row["Strategy Parameters"]!="" else ("model_uri="+row['Model ID'])
             final_commmand='python /usr/local/airflow/dags/q_pack/q_run/run_BT.py '+' '.join([(k+"="+v) for k, v in command.items() if v!=''])
             tab = BashOperator(
                 bash_command=final_commmand,
-                task_id=(row['Strategy']+str(i)),
+                task_id=(str(i)+"_"+row['Strategy']),
                 dag=dag
             )
             init >> tab >> clear
         return dag
 schedule = None #"@daily"
 dag_id = "strategy_dynamic_DAG"
-# df=pd.read_csv('/usr/local/airflow/dags/strategy.csv')
 s3 = boto3.client('s3',endpoint_url="http://minio-image:9000",aws_access_key_id="minio-image",aws_secret_access_key="minio-image-pass")
 Bucket="airflow-files"
 Key="strategy.csv"
