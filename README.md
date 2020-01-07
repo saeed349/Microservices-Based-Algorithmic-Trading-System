@@ -1,8 +1,8 @@
 <p align="center">
-    <a target="_blank"><img width="200" height="50" src="public/images/logo_0.png" alt="MBATS Logo"></a>
+    <a target="_blank"><img width="200" height="50" src="public/images/logo_0.PNG" alt="MBATS Logo"></a>
     <br />
     <br />
-    <b>Microservices Based Algorthmic Trading System</b>
+    <b>Microservices Based Algorithmic Trading System</b>
     <br />
     <br />
 </p>
