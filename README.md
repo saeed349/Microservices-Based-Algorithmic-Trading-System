@@ -1,5 +1,5 @@
 <p align="center">
-    <a target="_blank"><img width="200" height="50" src="public/images/logo2.png" alt="MBATS Logo"></a>
+    <a target="_blank"><img width="200" height="50" src="public/images/logo_0.png" alt="MBATS Logo"></a>
     <br />
     <br />
     <b>Microservices Based Algorthmic Trading System</b>
@@ -76,11 +76,11 @@ Once its is running, you can access the following components from the webaddress
     - [Minio Storage](./Storage/minio)
     - [DB Schema builder code](./Storage/q_pack/db_pack)
     - [Machine Learning input files](./Storage/minio/storage/model-support-files)(./Storage/minio/storage/model-support-files)
-    - [MLflow artifacts](./Storage/minio/storage/MLflow-models)
+    - [MLflow artifacts](./Storage/minio/storage/mlflow-models)
     
 6. You can choose what Securities to download by listing it in [*interested_tickers.xlsx*](./Storage/minio/storage/airflow-files/)
 The *daily* tab for listing the Securities for which EOD data is to be downloaded and *minute* tab for downloading at 1 minute interval. 
-7. Turn on the [*fx_data_download*](./Storage/airflow/dags/fx_data_download.py)  DAG in Airflow(http://localhost:8080) and this will download the Daily and Minute data for Securities you have set in the *interested_tickers.xlsx*
+7. Turn on the [*fx_data_download*](./Storage/airflow/dags/dag_fx_data_download.py)  DAG in Airflow(http://localhost:8080) and this will download the Daily and Minute data for Securities you have set in the *interested_tickers.xlsx*
 8. Go to Jupyter Notebook (http://localhost:8888) and use the Notebook [*Example.ipynb*](./Storage/notebooks/Example.ipynb) to run through the example strategy implementation where you can 
     - Run Backtrader trading strategies (Backtest or Live)
     - Preprocess the logs (Market Data and Indicator for each run) for preparing for Machine Learning model. 
