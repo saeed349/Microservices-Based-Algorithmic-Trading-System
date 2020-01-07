@@ -41,8 +41,8 @@ Table of Contents:
 - [Acknowledgments](#Acknowledgments)
       
 ## Quickstart
-
-[<img src="https://img.youtube.com/vi/2ivKEj3ksPk/maxresdefault.jpg" width="80%">](https://youtu.be/2ivKEj3ksPk)
+Check out the video below to see the platform in action  
+[<img src="https://img.youtube.com/vi/hLSGgW4-WC8/hqdefault.jpg" width="80%">](https://youtu.be/hLSGgW4-WC8)
 
 
 MBATS is based on Docker containers. Running your Infrastructure is as easy as running one command from your terminal. You can either run MBATS on your local machine or on the cloud using docker-compose. The easiest way to setup MBATS is by running the docker-compose file. Before running the installation command make sure you have [Docker](https://www.docker.com/products/docker-desktop) installed on your machine. 
@@ -140,6 +140,7 @@ If you want to reset the credentials and create reset, just delete this sqlite [
 Then once the container is up and running execute  
 ```docker exec -it superset superset-init```
 
+![Superset Dashboard](public/images/superset2.png)
 ## [Minio](https://min.io/)
 MinIO is pioneering high performance object storage. With READ/WRITE speeds of 55 GB/s and 35 GB/s on standard hardware, object storage can operate as the primary storage tier for a diverse set of workloads. Amazon’s S3 API is the defacto standard in the object storage world and represents the most modern storage API in the market. MinIO adopted S3 compatibiity early on and was the first to extend it to support S3 Select. Because of this S3 Compatibility by using Minio we have an upper hand of moving this object store towards cloud (AWS S3, Google Cloud Storage, Azure Storage) with minimal change to the codebase.
 
