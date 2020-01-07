@@ -140,7 +140,7 @@ If you want to reset the credentials and create reset, just delete this sqlite [
 Then once the container is up and running execute  
 ```docker exec -it superset superset-init```
 
-![Superset Dashboard](public/images/superset2.png)
+![Superset Dashboard](public/images/superset2.PNG)
 ## [Minio](https://min.io/)
 MinIO is pioneering high performance object storage. With READ/WRITE speeds of 55 GB/s and 35 GB/s on standard hardware, object storage can operate as the primary storage tier for a diverse set of workloads. Amazon’s S3 API is the defacto standard in the object storage world and represents the most modern storage API in the market. MinIO adopted S3 compatibiity early on and was the first to extend it to support S3 Select. Because of this S3 Compatibility by using Minio we have an upper hand of moving this object store towards cloud (AWS S3, Google Cloud Storage, Azure Storage) with minimal change to the codebase.
 
