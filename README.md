@@ -45,9 +45,6 @@ Table of Contents:
 [<img src="https://img.youtube.com/vi/2ivKEj3ksPk/maxresdefault.jpg" width="80%">](https://youtu.be/2ivKEj3ksPk)
 
 
-### Testing Embedding
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Qw9zlE3t8Ko" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 MBATS is based on Docker containers. Running your Infrastructure is as easy as running one command from your terminal. You can either run MBATS on your local machine or on the cloud using docker-compose. The easiest way to setup MBATS is by running the docker-compose file. Before running the installation command make sure you have [Docker](https://www.docker.com/products/docker-desktop) installed on your machine. 
 
 
