@@ -3,7 +3,7 @@ oandapyV20
 xlrd
 backtrader
 v20
-mlflow==1.4.0
+mlflow==1.23.1
 minio
 boto3
 sklearn
