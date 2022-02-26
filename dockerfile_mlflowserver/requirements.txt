@@ -1,2 +1,2 @@
-mlflow==1.4.0
+mlflow==1.23.1
 boto3
