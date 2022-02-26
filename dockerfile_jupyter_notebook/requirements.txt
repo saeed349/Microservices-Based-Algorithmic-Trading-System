@@ -1,5 +1,5 @@
 psycopg2-binary
-mlflow==1.4.0
+mlflow==1.23.1
 xgboost
 boto3
 oandapyV20
