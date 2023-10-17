@@ -17,7 +17,7 @@ MBATS aim to make a Quant's life a lot easier by providing a modular easy to set
 
 Using MBATS, you can easily create Trading Strategies in Backtrader, manage Machine Learning models with MLflow, use Postgres database with pgAdmin for storing and querying Market data. Store files and objects in Minio and use Superset to visualize performance of backtested and live strategies. And tie all the different components together and orchestrate jobs using Airflow and many more features to help you get started from idea to live trading faster and with least effort.
 
-[Linkedin Article about MBATS](https://www.linkedin.com/post/edit/6619730514188267520/)
+[Linkedin Article about MBATS](https://www.linkedin.com/pulse/microservices-based-algorithmic-trading-system-saeed-rahman/?trackingId=dsWm4zZBRIe3%2FznJMBaBHQ%3D%3D)
 
 Update: [MBATS V2.0](https://github.com/saeed349/Microservices-Based-Algorithmic-Trading-System-V-2.0) and [Cloud Version](https://github.com/saeed349/Quant-Trading-Cloud-Infrastructure) are now available.
 Also,[Latest Linkedin Article on scaling MBATS to the cloud using Terraform](https://www.linkedin.com/post/edit/6619730514188267520/) <br>
