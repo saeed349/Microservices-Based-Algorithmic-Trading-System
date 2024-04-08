@@ -19,8 +19,10 @@ Using MBATS, you can easily create Trading Strategies in Backtrader, manage Mach
 
 [Linkedin Article about MBATS](https://www.linkedin.com/pulse/microservices-based-algorithmic-trading-system-saeed-rahman/?trackingId=dsWm4zZBRIe3%2FznJMBaBHQ%3D%3D)
 
-Update: [MBATS V2.0](https://github.com/saeed349/Microservices-Based-Algorithmic-Trading-System-V-2.0) and [Cloud Version](https://github.com/saeed349/Quant-Trading-Cloud-Infrastructure) are now available.
-Also,[Latest Linkedin Article on scaling MBATS to the cloud using Terraform](https://www.linkedin.com/post/edit/6619730514188267520/) <br>
+Updates:
+- 2024 - [Quant Infra Design](https://github.com/saeed349/quant_infra/wiki) and [Linkedin Article](https://www.linkedin.com/pulse/quant-platform-cash-equities-saeed-rahman-txw3c/)
+- 2021 - [MBATS V2.0](https://github.com/saeed349/Microservices-Based-Algorithmic-Trading-System-V-2.0) and [Cloud Version](https://github.com/saeed349/Quant-Trading-Cloud-Infrastructure) are now available.
+Also,[Linkedin Article on scaling MBATS to the cloud using Terraform](https://www.linkedin.com/post/edit/6619730514188267520/) <br>
 
 
 
